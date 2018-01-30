@@ -1,0 +1,29 @@
+/* Navbar */
+/* ============================================================= */
+
+.nav-item{
+    margin-right: 20px;
+}
+
+.navbar-nav > li > a.scrape {
+    padding: 10px;
+    /* margin-top: 10px; */
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+.scrape {
+    cursor: pointer;
+}
+
+/* Footer */
+/* ============================================================= */
+footer {
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: #706A64;
+}
