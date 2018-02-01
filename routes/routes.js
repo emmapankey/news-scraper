@@ -1,8 +1,17 @@
+// *** Dependencies
+// =============================================================
+var express = require("express");
+var router = express.Router();
+var Scraped = require("../model/scraped");
+var Saved = require("../model/saved");
+var scraper = require('../controller/scraperController');
+
+
 // Routes
 // =============================================================
 
 // 1. At the "/" path display every entry in the scraped collection 
-app.get("/", function (req, res) {
+router.get("/", function (req, res) {
     // Query: In the news database, go to the scraped collection, then "find" everything (all scraped articles)
     db.scraped.find({}, function (error, found) {
         // Log any errors if the server encounters one
@@ -17,8 +26,8 @@ app.get("/", function (req, res) {
 });  
 
 // 2. At the "/saved" path display every entry in the saved collection
-app.get("/saved", function (req, res) {
-    // Query: In the news database, go to the saved collection, then "find" everything (all articles saved by user) and sort by date saved
+router.get("/saved", function (req, res) {
+    // Query: In the news-scraper database, go to the saved collection, then "find" everything (all articles saved by user) and sort by date saved
     db.saved.find().sort({created: 1}, function (error, found) {
         // Log any errors if the server encounters one
         if (error) {
@@ -29,4 +38,6 @@ app.get("/saved", function (req, res) {
             res.json(found);
         }
     });
-}); 
+});
+
+module.exports = router;
