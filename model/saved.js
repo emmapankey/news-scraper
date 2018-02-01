@@ -2,7 +2,7 @@
 var mongoose = require("mongoose");
 
 // Require db connection
-var db = require("...config/connection");
+var db = require("../config/connection");
 
 // Create saved article schema
 var savedSchema = mongoose.Schema({

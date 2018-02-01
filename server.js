@@ -28,7 +28,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-var routes = require("controller/scraperController.js");
+var routes = require("./routes/routes.js");
 
 app.use("/", routes);
 
