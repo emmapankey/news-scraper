@@ -1,17 +1,25 @@
+// Require Mongoose
 var mongoose = require("mongoose");
 
+// Require db connection
+var db = require("...config/connection");
+
+// Create scraped article schema
 var scrapedSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     headline: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     summary: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     url: {
         type: String,
+        unique: true,
         validate: {
             validator: function (text) {
                 return text.indexOf("https://www.newscientist.com/") === 0;
@@ -26,6 +34,8 @@ var scrapedSchema = mongoose.Schema({
     }
 });
 
+// Create Scraped model with the scrapedSchema
 var Scraped = mongoose.model("Scraped", scrapedSchema);
 
+// Export the Scraped model
 module.exports = Scraped;
