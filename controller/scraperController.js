@@ -3,9 +3,8 @@
 // Require request and cheerio. This makes the html scraping possible.
 var request = require("request");
 var cheerio = require("cheerio");
-// ADDED MONGOOSE
-var mongoose = require("mongoose");
 
+var mongoose = require("mongoose");
 // Use Mongoose models
 var Scraped = require("../model/scraped");
 var Saved = require("../model/saved");
@@ -40,30 +39,16 @@ exports.scrapeThis = (function() {
                         url: url,
                         photo: photo,
                     });
-                        // function (err, inserted) {
-                        //     if (err) {
-                        //         // Log the error if one is encountered during the query
-                        //         console.log(err);
-                        //     }
-                        //     else {
-                        //         // Otherwise, log the inserted data
-                        //         console.log(inserted);
-                        //     }
-                        // });
+
                     scrapedArticle.save(function (error) {
                         if (error) {
                             console.log("Error saving article: " + error);
                         }
                         else {
-                            // Send a "Scrape Complete" message to the browser
-                            // res.send("Scrape Complete");
+                            console.log("Scrape Complete");
                         }
                     });
                 }
             });
-        // end request
         });
-        // callback();
-        
-    // end function
     });
