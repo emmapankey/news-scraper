@@ -18,6 +18,19 @@
     cursor: pointer;
 }
 
+/* Jumbotron */
+/* ============================================================= */
+.jumbotron {
+    height: 400px;
+}
+
+.textContainer {
+    position: absolute;
+    margin-top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
 /* Footer */
 /* ============================================================= */
 footer {
