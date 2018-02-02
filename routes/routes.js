@@ -24,21 +24,22 @@ router.get("/", function (req, res) {
             res.json(found);
         }
     });
-});  
+});
 
-// 2. At the "/scrape" path call the scraper function. This is to be used only when the scrape new articles button is clicked.
+// 2. At the "/scrape" path call the scraper function.
 router.get("/api/scrape", function (req, res) {
     // Run the scrapeThis function from controller
-    scraper.scrapeThis();
-    // After scraping redirect to home route to render all scraped articles
-	// res.redirect('/');
-});
-//.then PUT REDIRECT IN THEN HERE
-	
+    scraper.scrapeThis(function() 
+	{
+        // After scraping redirect to home route to render all scraped articles
+		res.redirect("/");
+	});
+}); 
+
 // 3. At the "/saved" path display every entry in the saved collection
 router.get("/saved", function (req, res) {
     // Query: In the news-scraper database, go to the saved collection, then "find" everything (all articles saved by user) and sort by date saved
-    Saved.find().sort({created: 1}, function (error, found) {
+    Saved.find().sort({ created: 1 }, function (error, found) {
         // Log any errors if the server encounters one
         if (error) {
             console.log(error);
@@ -49,5 +50,6 @@ router.get("/saved", function (req, res) {
         }
     });
 });
+
 
 module.exports = router;
