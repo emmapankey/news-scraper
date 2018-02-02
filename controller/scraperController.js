@@ -11,7 +11,7 @@ var Scraped = require("../model/scraped");
 var Saved = require("../model/saved");
 
 // Scrape data from the site and place it into the mongodb db
-exports.scrapeThis = (function(callback) { 
+exports.scrapeThis = (function() { 
     // Make a request for the news section of ycombinator
     request("https://www.newscientist.com/", function (error, response, html) {
 
@@ -56,15 +56,14 @@ exports.scrapeThis = (function(callback) {
                         }
                         else {
                             // Send a "Scrape Complete" message to the browser
-                            res.send("Scrape Complete");
+                            // res.send("Scrape Complete");
                         }
                     });
                 }
-                callback();
             });
         // end request
         });
+        // callback();
+        
     // end function
-    }
-
- 
+    });
