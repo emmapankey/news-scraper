@@ -30,18 +30,40 @@
                     <a class="nav-link active" href="/saved">Saved Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-danger scrape">SCRAPE NEW ARTICLES!</a>
+                    <a class="btn btn-danger scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
                 </li>
+
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid text-center">
-        <div class="textContainer">
-            <h1 class="display-4">Mongo Scraper</h1>
-            <p class="lead">New Scientist Edition</p>
+    <div class="jumbotron jumbotron-fluid text-center" id="fluid">
+        <div class="container-fluid">
+            <h1 class="titleH1">Mongo Scraper</h1>
+            <p class="titleP">New Scientist Edition</p>
         </div>
-
     </div>
+
+    <div class="card" id="articlesPanel">
+        <ul class="list-group list-group-flush" id="articlesListGroup">
+            <!-- {{#each headline}}
+            <li class="list-group-item" id="articleItem"><span class="headline">{{headline}}</span><span class="summary">{{summary}}</span></li>
+            {{/#each}} -->
+
+
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
+
+
+
 
     <footer class="fixed-bottom"></footer>
 
