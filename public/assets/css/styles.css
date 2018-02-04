@@ -1,3 +1,4 @@
+
 /* Navbar */
 /* ============================================================= */
 
@@ -7,7 +8,6 @@
 
 .navbar-nav > li > a.scrape {
     padding: 10px;
-    /* margin-top: 10px; */
     font-size: 16px;
     font-weight: bold;
     color: white;
@@ -17,6 +17,86 @@
 .scrape {
     cursor: pointer;
 }
+
+/* Jumbotron */
+/* ============================================================= */
+#fluid {
+    width: 100%;
+    height: 575px;
+    background-image: url(../images/tele2.jpg);
+    background-size: cover;
+}
+
+.container-fluid {
+    margin-top: 100px;
+}
+
+.titleH1 {
+    font-size: 60px;
+    left: 100px;
+    margin-left: 400px;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s; /* Firefox */
+    -webkit-animation: fadein 3s; /* Safari and Chrome */
+    -o-animation: fadein 3s; /* Opera */
+    /* animation-delay: 2s;     */
+}
+
+
+.titleP {
+    font-size: 40px;
+    margin-left: 400px;
+    animation: fadein 5s;
+    -moz-animation: fadein 5s; /* Firefox */
+    -webkit-animation: fadein 5s; /* Safari and Chrome */
+    -o-animation: fadein 5s; /* Opera */
+    /* animation-delay: 2s;     */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Articles Panel */
+/* ============================================================= */
+#articlesPanel {
+    width:100%;
+    background-color: #F9E79F;
+}
+
+#articlesListGroup {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 
 /* Footer */
 /* ============================================================= */

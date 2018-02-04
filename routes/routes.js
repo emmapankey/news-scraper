@@ -5,6 +5,7 @@ var router = express.Router();
 var Scraped = require("../model/scraped.js");
 var Saved = require("../model/saved.js");
 var scraper = require("../controller/scraperController.js");
+var path = require("path");
 
 
 // Routes
@@ -12,6 +13,8 @@ var scraper = require("../controller/scraperController.js");
 
 // 1. At the "/" path display every entry in the scraped collection 
 router.get("/", function (req, res) {
+    // res.sendFile(path.join(__dirname, "../public/test.html"));
+    
     // Query: In the news database, go to the scraped collection, then "find" everything (all scraped articles)
     Scraped.find({}, function (error, found) {
         // Log any errors if the server encounters one
@@ -21,12 +24,14 @@ router.get("/", function (req, res) {
         // Otherwise, send the result of this query to the browser as JSON
         // PUT HANDLEBARS HERE
         else {
-            res.json(found);
+            // res.json(found);
+            // res.render("home");
+            res.sendFile(path.join(__dirname, "../public/test.html"));            
         }
     });
 });
 
-// 2. At the "/scrape" path call the scraper function.
+// 2. At the "/api/scrape" path call the scraper function.
 router.get("/api/scrape", function (req, res) {
     // Run the scrapeThis function from controller
     scraper.scrapeThis(function() 
