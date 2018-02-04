@@ -26,9 +26,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.engine("handlebars", exphb({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect("mongodb://localhost/news-scraper", {
+  // useMongoClient: true
+});
+
 // Routes
 // =============================================================
-var routes = require("");
+var routes = require("./routes/routes.js");
 
 app.use("/", routes);
 
