@@ -1,3 +1,5 @@
+<div class="containerDiv">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">News Scraper</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -13,35 +15,34 @@
             <li class="nav-item">
                 <a class="nav-link active" href="/saved">Saved Articles</a>
             </li>
-            <li class="nav-item">
-                <a class="btn btn-danger scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
-            </li>
-
+        </ul>
+        <a class="btn btn-danger" id="scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
     </div>
 </nav>
 
 <div class="jumbotron jumbotron-fluid text-center" id="fluid">
     <div class="container-fluid">
-        <h1 class="titleH1">Mongo Scraper</h1>
-        <p class="titleP">New Scientist Edition</p>
+        <p class="title">Mongo Scraper</p>
+        <p class="subTitle">New Scientist Edition</p>
     </div>
 </div>
 
+{{#each article}}
 <div class="card" id="articlesPanel">
-    {{#each article}}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3><a class="article-link" target="_blank" href="{{url}}">{{headline}}</a>
-                <a class="btn btn-success save">Save Article</a></h3>
+    <div class="card-body">
+        <div class="card-title">
+            <h3><a class="card-link" target="_blank" href="{{url}}">{{headline}}</a>
+                <a class="btn btn-danger">SAVE ARTICLE</a></h3>
         </div>
-        <div class="panel-body">{{summary}}</div>
+        <div class="card-text">{{summary}}</div>
     </div>
-    {{/each}} {{!--
-    <ul class="list-group list-group-flush" id="articlesListGroup">
-        {{#each article}} --}} {{!--
-        <li class="list-group-item" id="articleItem"><span class="headline">{{headline}}</span><span class="summary">{{summary}}</span></li> --}} {{!--
-        <li class="list-group-item" id="headline">{{headline}}</li>
-        <li iclass="list-group-item" id="summary">{{summary}}</li>
-        {{/each}}
-    </ul> --}}
+</div>
+{{/each}}
+
+<footer class="footerDiv">
+    <div class="footerContainer">
+        <p class="footerText">New Scientist Mongo Scraper</p>
+    </div>
+</footer>
+
 </div>
