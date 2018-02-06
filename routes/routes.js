@@ -21,7 +21,6 @@ router.get("/", function (req, res) {
         if (error) {
             console.log(error);
         }
-        // RENDER HANDLEBARS HERE
         else {
             // Otherwise, render the result of the query as handlebars
             res.render("home", { article: found });
@@ -51,6 +50,8 @@ router.get("/saved", function (req, res) {
         // Otherwise, send the result of this query to the browser as JSON
         else {
             res.json(found);
+            // Otherwise, render the result of the query as handlebars
+            res.render("saved", { saved: found });
         }
     });
 });
