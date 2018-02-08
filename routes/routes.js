@@ -55,14 +55,19 @@ router.get("/api/scrape", function (req, res) {
 router.put("/api/saved/:id", function (req, res) {
     var id = req.params.id;
     var updatedObj = {saved: true};
-    Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
-        if (error){
-            console.log("Something wrong when updating data at /api/saved:id");
-        }
-        else {
-            console.log("UPDATED: " + updated);
-            // res.send();
-        }
+    // Scraped.findByIdAndUpdate(id, updatedObj, function(error, updated){
+    Scraped.findByIdAndUpdate(id, { 
+            $set: { saved: true}}, {upsert:true}, function (err, updated) {
+              return res.json(updated);
+            }) 
+    // Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
+    //     if (error){
+    //         console.log("Something wrong when updating data at /api/saved:id");
+    //     }
+    //     else {
+    //         console.log("UPDATED: " + updated);
+    //         // res.send();
+    //     }
     });
 });
 
