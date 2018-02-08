@@ -57,7 +57,6 @@ router.put("/api/saved/:id", function (req, res) {
     var updatedObj = {saved: true};
     Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
         if (error){
-            //error occurring here
             console.log("Something wrong when updating data at /api/saved:id");
         }
         else {
