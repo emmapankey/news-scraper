@@ -39,7 +39,34 @@ router.get("/api/scrape", function (req, res) {
     });
 });
 
-// 3. At the "/saved" path display every entry in the saved collection
+// 3. At the "/api/save:id" path update the article's saved key to true in the Scraped document
+// router.get("/api/saved/:id", function (req, res) {
+//     console.log(req.params.id)
+//     db.Scraped.findOneAndUpdate({_id: req.params.id}, { $set: { saved: true} }, function(error, updated){
+//         if (error){
+//             console.log("Something wrong when updating data!");
+//         }
+//         else {
+//             console.log(updated);
+//         }
+//     });
+// });
+
+router.put("/api/saved/:id", function (req, res) {
+    var id = req.params.id;
+    var updatedObj = {saved: true};
+    Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
+        if (error){
+            console.log("Something wrong when updating data at /api/saved:id");
+        }
+        else {
+            console.log("UPDATED: " + updated);
+            // res.send();
+        }
+    });
+});
+
+// 4. At the "/saved" path display every entry in the saved collection
 router.get("/saved", function (req, res) {
     // Query: In the news-scraper database, go to the saved collection, then "find" everything (all articles saved by user) and sort by date saved
     Saved.find().sort({ created: 1 }, function (error, found) {
