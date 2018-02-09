@@ -23,9 +23,7 @@ router.get("/", function (req, res) {
         }
         else {
             // Otherwise, render the result of the query as handlebars
-            res.render("home", { article: found });
-            // res.json(found);
-            // res.sendFile(path.join(__dirname, "../public/test.html"));            
+            res.render("home", { article: found });            
         }
     });
 });
@@ -53,13 +51,14 @@ router.get("/api/scrape", function (req, res) {
 // });
 
 router.put("/api/saved/:id", function (req, res) {
-    var id = req.params.id;
-    var updatedObj = {saved: true};
-    // Scraped.findByIdAndUpdate(id, updatedObj, function(error, updated){
-    Scraped.findByIdAndUpdate(id, { 
-            $set: { saved: true}}, {upsert:true}, function (err, updated) {
-              return res.json(updated);
-            }) 
+    var articleId = req.params.id;
+    console.log(articleId);
+    // console.log(newSavedState);
+    // var updatedObj = {saved: true};
+    Scraped.findByIdAndUpdate(articleId, {"saved": true}, function (err, updated) {
+
+    });
+
     // Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
     //     if (error){
     //         console.log("Something wrong when updating data at /api/saved:id");
@@ -68,25 +67,21 @@ router.put("/api/saved/:id", function (req, res) {
     //         console.log("UPDATED: " + updated);
     //         // res.send();
     //     }
-    });
+    // });
 });
 
-// 4. At the "/saved" path display every entry in the saved collection
+
+// 4. At the "/saved" path display all the saved articles
 router.get("/saved", function (req, res) {
-    // Query: In the news-scraper database, go to the saved collection, then "find" everything (all articles saved by user) and sort by date saved
-    Saved.find().sort({ created: 1 }, function (error, found) {
-        // Log any errors if the server encounters one
+    Scraped.find({ "saved": true }, function (error, found) {
+        // Log any errors
         if (error) {
             console.log(error);
-        }
-        // Otherwise, send the result of this query to the browser as JSON
-        else {
-            res.json(found);
-            // Otherwise, render the result of the query as handlebars
-            res.render("saved", { saved: found });
+        } else {
+             // Otherwise, render the result of the query as handlebars
+            res.render("saved", {saved: found});
         }
     });
 });
-
 
 module.exports = router;
