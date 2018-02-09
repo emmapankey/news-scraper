@@ -165,6 +165,7 @@ body {
     border-color: #62443c;
     box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
     cursor: pointer;
+    margin-right: 200px;
 }
 
 #deleteBtn {
@@ -184,8 +185,15 @@ body {
 }
 
 .card .card-text {
+    margin-right: 200px;
     font-size: 20px;
-    /* font-weight: bold; */
+    font-family: 'News Cycle', sans-serif;    
+    color: #4b4646;
+}
+
+#savedCardText {
+    margin-right: 400px;
+    font-size: 20px;
     font-family: 'News Cycle', sans-serif;    
     color: #4b4646;
 }
