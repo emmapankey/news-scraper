@@ -15,8 +15,22 @@ $(document).ready(function () {
             type: "PUT",
             data: newSavedState
         }).then(
-            function (result) {}
+            function (result) {
+            }
         );
     });
 
+    // Delete a saved article function
+    $('#deleteBtn').click(function (event) {
+        var id = $(this).data("id");
+        // alert(id);
+
+        $.ajax("/api/saved" + id, {
+            type:"PUT"
+        }).then(
+            function (result) {
+            }
+        );
+    });
+        
 });
