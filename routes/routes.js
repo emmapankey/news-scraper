@@ -52,28 +52,18 @@ router.get("/api/scrape", function (req, res) {
 
 router.put("/api/saved/:id", function (req, res) {
     var articleId = req.params.id;
-    console.log(articleId);
-    // console.log(newSavedState);
-    // var updatedObj = {saved: true};
-    Scraped.findByIdAndUpdate(articleId, {"saved": true}, function (err, updated) {
-
-    });
-
-    // Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(error, updated){
-    //     if (error){
-    //         console.log("Something wrong when updating data at /api/saved:id");
-    //     }
-    //     else {
-    //         console.log("UPDATED: " + updated);
-    //         // res.send();
-    //     }
-    // });
+    var updatedObj = {"saved": true};
+        
+    Scraped.findByIdAndUpdate(articleId, updatedObj, {new: true}, function(err, model) {
+        if (err) {
+            console.log(err);
+        }
+    })
 });
-
 
 // 4. At the "/saved" path display all the saved articles
 router.get("/saved", function (req, res) {
-    Scraped.find({ "saved": true }, function (error, found) {
+    Scraped.find({"saved": false}, function (error, found) {
         // Log any errors
         if (error) {
             console.log(error);
