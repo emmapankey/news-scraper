@@ -41,11 +41,8 @@ router.get("/api/scrape", function (req, res) {
 router.put("/api/saved/:id", function (req, res) {
     
     // Use the article id to find and update it's saved property
-
-    // Testing to see what id is
-    // var id = "id is: " + req.params.id;
     var id = req.params.id;
-    console.log("id is: " + id);
+    // console.log("id is: " + id);
 
     var updatedObj = {"saved": true};
         
@@ -53,7 +50,6 @@ router.put("/api/saved/:id", function (req, res) {
         if (err) {
             console.log(err);
         }
-        // res.render("saved", {saved: found})
     })
 });
 
@@ -70,25 +66,24 @@ router.get("/saved", function (req, res) {
     });
 });
 
-//5. Delete a saved article
-router.post("/api/delete/:id", function (req, res) {
+//5. "Delete" a saved article by changing the saved status to false
+router.put("/api/delete/:id", function (req, res) {
+        // Use the article id to find and update it's saved property
+        var id = req.params.id;
+        // console.log("id is: " + id);
 
-    // Use the article id to find and update it's saved property
-    // var articleId = req.params.id;    
-    Article.findOneAndUpdate({
-        "_id": req.params.id
-    }, { "saved": false })
-        // Execute the above query
-        .exec(function (err, doc) {
-            // Log any errors
+        var updatedObj = {"saved": false};
+
+        Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(err, found) {
             if (err) {
                 console.log(err);
-            } else {
-                // Or send the document to the browser
-                console.log("deleted the article");
-                res.send(doc);
             }
-        });
-}
-);
+            else {
+            // console.log("Deleted article " + id);
+            // res.redirect("/saved");
+            // res.render("saved", {saved: found});         
+            }
+        })
+});
+
 module.exports = router;
