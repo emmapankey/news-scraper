@@ -35,7 +35,7 @@ mongoose.connect("mongodb://localhost/news-scraper", {
 
 // Routes
 // =============================================================
-var routes = require("./routes/routes.js");
+var routes = require("./routes/routes");
 
 app.use("/", routes);
 

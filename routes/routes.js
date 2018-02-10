@@ -41,20 +41,25 @@ router.get("/api/scrape", function (req, res) {
 router.put("/api/saved/:id", function (req, res) {
     
     // Use the article id to find and update it's saved property
-    var articleId = req.params.id;
+
+    // Testing to see what id is
+    // var id = "id is: " + req.params.id;
+    var id = req.params.id;
+    console.log("id is: " + id);
+
     var updatedObj = {"saved": true};
         
-    Scraped.findByIdAndUpdate(articleId, updatedObj, {new: true}, function(err, found) {
+    Scraped.findByIdAndUpdate(id, updatedObj, {new: true}, function(err, found) {
         if (err) {
             console.log(err);
         }
-        res.render("saved", {saved: found})
+        // res.render("saved", {saved: found})
     })
 });
 
 // 4. At the "/saved" path display all the saved articles
 router.get("/saved", function (req, res) {
-    Scraped.find({"saved": false}, function (error, found) {
+    Scraped.find({"saved": true}, function (error, found) {
         // Log any errors
         if (error) {
             console.log(error);
@@ -65,7 +70,7 @@ router.get("/saved", function (req, res) {
     });
 });
 
-//6. Delete a saved article
+//5. Delete a saved article
 router.post("/api/delete/:id", function (req, res) {
 
     // Use the article id to find and update it's saved property

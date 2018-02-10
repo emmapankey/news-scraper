@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
     // Save an article function
-    $('#saveBtn').click(function (event) {
+    // $("#saveBtn").on("click", function(event) {
+    $(document).on("click", "#saveBtn", function () {
 
         var id = $(this).data("id");
         // alert(id);
@@ -11,7 +12,7 @@ $(document).ready(function () {
         };
         
         // Send the post request.
-        $.ajax("/api/saved" + id, {
+        $.ajax("/api/saved/" + id, {
             type: "PUT",
             data: newSavedState
         }).then(
