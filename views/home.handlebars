@@ -16,9 +16,29 @@
                 <a class="nav-link" href="/saved">Saved Articles</a>
             </li>
         </ul>
+        {{!-- add [data-toggle="modal" data-target="#scrapedModal"] --}}
         <a class="btn btn-danger" id="scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
     </div>
 </nav>
+
+  {{!-- Modal after scrape --}}
+    {{!-- <div class="modal fade" id="scrapedModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="modal-title" id="exampleModalLabel">Added 18 new articles!</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="closeModal" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
 <div class="jumbotron jumbotron-fluid text-center" id="fluid">
     <div class="container-fluid">
@@ -32,10 +52,7 @@
     <div class="card-body">
         <div class="card-title">
             <h3><a class="card-link" target="_blank" href="{{url}}">{{headline}}</a>
-                {{!-- <form class="changed-saved-form"> --}}
-                    {{!-- <input type="hidden" name="saved" value="true"> --}}
-                    <button class="btn btn-danger" id="saveBtn" value="submit" data-id={{_id}}>SAVE ARTICLE</button>
-                {{!-- </form> --}}
+                <button class="btn btn-danger" id="saveBtn" value="submit" data-id={{_id}}>SAVE ARTICLE</button>
             </h3>
         </div>
         <div class="card-text">{{summary}}</div>
