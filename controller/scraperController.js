@@ -42,7 +42,7 @@ exports.scrapeThis = (function() {
 
                     scrapedArticle.save(function (error) {
                         if (error) {
-                            console.log("Error saving article: " + error);
+                            console.log("Cannot Save Duplicate Articles");
                         }
                         else {
                             console.log("Scrape Complete");

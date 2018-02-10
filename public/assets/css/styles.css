@@ -63,6 +63,32 @@ body {
     }
   }
 
+  /* Modal After Scrape */
+/* ============================================================= */
+.modal-header, .modal-body, .modal-footer {
+    border-radius: 0;
+    background-color: #f8f9fa;
+    color: #3f3d3b;
+    font-family: 'News Cycle', sans-serif;
+}
+
+.modal-header, .modal-footer {
+    box-shadow: 3px 3px 20px #62443c;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+#closeModal {
+    font-family: 'Lato', sans-serif;
+    color: #fbfcf9;
+    background-color: #62443c;
+    border-color: #62443c;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
 /* Jumbotron */
 /* ============================================================= */
 #fluid {
