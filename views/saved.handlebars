@@ -32,13 +32,46 @@
     <div class="card-body">
         <div class="card-title">
             <h3><a class="card-link" target="_blank" href="{{url}}">{{headline}}</a>
-                <a class="btn btn-danger" id="noteBtn">Article Notes</a></h3>
+                <button class="btn btn-danger" id="noteBtn" data-id={{_id}}>Article Notes</button></h3>
                 <button class="btn btn-danger" id="deleteBtn"  value="submit" data-id={{_id}}>Delete from Saved</button>
         </div>
         <div class="card-text" id="savedCardText">{{summary}}</div>
     </div>
 </div>
+
+{{!-- Note Modal --}}
+        <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="modalHeader">
+                    <h3>Notes For Article: {{_id}}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    {{#if articleWithNote}}
+                        {{#each articleWithNote}}
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    {{note}}
+                                    <button class="btn btn-danger" id="deleteNoteBtn">x</button>
+                                </li>
+                            </ul>
+                        {{/each}}
+                    {{else}}
+                        <h5 class="modal-title" id="exampleModalLabel">No notes for this article yet.</h5>
+                    {{/if}}
+                   <textarea class="newNoteText" placeholder="New Note" rows="4" cols="60"></textarea>
+                 </div>
+                <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn btn-secondary" id="saveNote" data-dismiss="modal">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {{/each}}
+
 
 <footer class="footerDiv">
     <div class="footerContainer"> 
