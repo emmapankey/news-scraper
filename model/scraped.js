@@ -5,7 +5,6 @@ var mongoose = require("mongoose");
 var db = require("../config/connection");
 
 // Create scraped article schema
-//DO YOU NEED NEW HERE
 var scrapedSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     headline: {
