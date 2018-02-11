@@ -1,84 +1,84 @@
 <div class="containerDiv">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">News Scraper</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
+    {{!-- Navbar --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">News Scraper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/saved">Saved Articles</a>
-            </li>
-        </ul>
-        <a class="btn btn-danger" id="scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
-    </div>
-</nav>
-
-<div class="jumbotron jumbotron-fluid text-center" id="fluid">
-    <div class="container-fluid">
-        <p class="title">Saved Articles</p>
-        <p class="subTitle">Your Saved Articles</p>
-    </div>
-</div>
-
-{{#each saved}}
-<div class="card" id="articlesPanel">
-    <div class="card-body">
-        <div class="card-title">
-            <h3><a class="card-link" target="_blank" href="{{url}}">{{headline}}</a>
-                <button class="btn btn-danger" id="noteBtn" data-id={{_id}}>Article Notes</button></h3>
-                <button class="btn btn-danger" id="deleteBtn"  value="submit" data-id={{_id}}>Delete from Saved</button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/saved">Saved Articles</a>
+                </li>
+            </ul>
+            <a class="btn btn-danger" id="scrape" href="/api/scrape">SCRAPE NEW ARTICLES!</a>
         </div>
-        <div class="card-text" id="savedCardText">{{summary}}</div>
-    </div>
-</div>
+    </nav>
 
-{{!-- Note Modal --}}
-        <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
+    <div class="jumbotron jumbotron-fluid text-center" id="fluid">
+        <div class="container-fluid">
+            <p class="title">Saved Articles</p>
+            <p class="subTitle">Your Saved Articles</p>
+        </div>
+    </div>
+
+    {{!-- Saved Articles Panel --}}
+    {{#each saved}}
+    <div class="card" id="articlesPanel">
+        <div class="card-body">
+            <div class="card-title">
+                <h3><a class="card-link" target="_blank" href="{{url}}">{{headline}}</a>
+                    <button class="btn btn-danger" id="noteBtn" data-id={{_id}}>Article Notes</button></h3>
+                <button class="btn btn-danger" id="deleteBtn" value="submit" data-id={{_id}}>Delete from Saved</button>
+            </div>
+            <div class="card-text" id="savedCardText">{{summary}}</div>
+        </div>
+    </div>
+    {{/each}}
+
+    {{!-- Note Modal --}}
+    <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" id="modalHeader">
-                    <h3>Notes For Article: {{_id}}</h3>
+                    {{!-- <h3>Notes For Article: {{_id}}</h3> --}}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                 </div>
                 <div class="modal-body" id="modalBody">
-                    {{#if articleWithNote}}
-                        {{#each articleWithNote}}
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    {{note}}
-                                    <button class="btn btn-danger" id="deleteNoteBtn">x</button>
-                                </li>
-                            </ul>
-                        {{/each}}
-                    {{else}}
-                        <h5 class="modal-title" id="exampleModalLabel">No notes for this article yet.</h5>
+                    {{#if articleWithNote}} {{#each articleWithNote}}
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{note}}
+                            <button class="btn btn-danger" id="deleteNoteBtn">x</button>
+                        </li>
+                    </ul>
+                    {{/each}} {{else}}
+                    <h5 class="modal-title" id="exampleModalLabel">No notes for this article yet.</h5>
                     {{/if}}
-                   <textarea class="newNoteText" placeholder="New Note" rows="4" cols="60"></textarea>
-                 </div>
+                    <textarea class="newNoteText" placeholder="New Note" rows="4" cols="60"></textarea>
+                </div>
                 <div class="modal-footer" id="modalFooter">
                     <button type="button" class="btn btn-secondary" id="saveNote" data-dismiss="modal">Save Note</button>
                 </div>
             </div>
         </div>
     </div>
-{{/each}}
 
-
-<footer class="footerDiv">
-    <div class="footerContainer"> 
-        <p class="footerText">&copy; Emma Pankey 2018</p>
-        <p class="footerText">|</p>
-        <p class="footerText">New Scientist Mongo Scraper</p>
-    </div>
-</footer>
+    {{!-- Footer --}}
+    <footer class="footerDiv">
+        <div class="footerContainer">
+            <p class="footerText">&copy; Emma Pankey 2018</p>
+            <p class="footerText">|</p>
+            <p class="footerText">New Scientist Mongo Scraper</p>
+        </div>
+    </footer>
 
 </div>
