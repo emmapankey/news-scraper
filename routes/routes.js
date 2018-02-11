@@ -67,7 +67,7 @@ router.get("/saved", function (req, res) {
 });
 
 //5. "Delete" a saved article by changing the saved status to false
-router.put("/api/delete/:id", function (req, res) {
+router.post("/api/delete/:id", function (req, res) {
         // Use the article id to find and update it's saved property
         var id = req.params.id;
         // console.log("id is: " + id);
