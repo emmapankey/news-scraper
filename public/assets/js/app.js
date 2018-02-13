@@ -1,32 +1,60 @@
 $(document).ready(function () {
+    
 
+    // Scrape articles request
     $(document).on("click", "#scrape", function () {
-        // Scrape articles request
         $.ajax({
             method: "GET",
             url: "/api/scrape"
-        }).done(function (data) {
+        }).done(function() {
+            location.reload();
+        })
+    });
 
-            // if (data == "") {
+            // console.log("made it here");
             //     $("#noArticlesModal").modal();
             // }
             // else {
-            //      location.reload();
+                //  location.reload();
             //     $("#scrapedModal").modal();
             // }
-        })
-        $("#scrapedModal").modal();
+
+        // $("#scrapedModal").modal();
+  
+
+    // Save an article request
+    $(document).on("click", "#saveBtn", function () {
+        var id = $(this).data("id");
+
+        $.ajax("/api/saved/" + id, {
+            type: "PUT",
+        }).done(function (result) {
+        });
     });
+
+    // "Delete" a saved article request
+    $('#deleteBtn').click(function (event) {
+        var id = $(this).data("id");
+
+        $.ajax("/api/delete/" + id, {
+            type: "POST"
+        }).done(function() {
+            location.reload();
+        })
+    });
+
 
     $(document).on("click", "#noteBtn", function () {
         $("#noteModal").modal();
     });
 
+    // Create a note request
     $(document).on("click", "#saveNote", function () {
 
-        var noteobj;
+        var noteobj = {
+            
+        }
 
-        // Create a note request
         $ajax({
             method: "POST",
             url: "/api/note",
@@ -34,31 +62,6 @@ $(document).ready(function () {
         }).done(function (data) {
 
         })
-    });
-
-    $(document).on("click", "#saveBtn", function () {
-        var id = $(this).data("id");
-
-        // Save an article request
-        $.ajax("/api/saved/" + id, {
-            type: "PUT",
-        }).done(function (result) {
-        });
-    });
-
-
-    $('#deleteBtn').click(function (event) {
-        var id = $(this).data("id");
-
-        // "Delete" a saved article request
-        $.ajax("/api/delete/" + id, {
-            type: "POST",
-            success: function(data){
-                if(data.success == true){ // if true
-                    location.reload(); // then reload the page
-                }
-            }
-        });
     });
 
 });
