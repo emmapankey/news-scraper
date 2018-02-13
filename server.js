@@ -29,7 +29,7 @@ app.set("view engine", "handlebars");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/news-scraper", {
+mongoose.connect("mongodb://heroku_m6wb62bz:c0hubc98jmk1c4momrs5lsg38k@ds153699.mlab.com:53699/heroku_m6wb62bz", {
   // useMongoClient: true
 });
 
