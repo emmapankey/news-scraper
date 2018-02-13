@@ -5,15 +5,10 @@ var mongoose = require("mongoose");
 var db = require("../config/connection");
 
 // Create note for article notes schema
-var NoteSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+var noteSchema = mongoose.Schema({
     noteText: {
         type: String,
         required: true
-    },
-    created: {
-        type: Date,
-        default: Date.now
     }
 });
 

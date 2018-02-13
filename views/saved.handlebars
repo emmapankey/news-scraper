@@ -28,8 +28,7 @@
         </div>
     </div>
 
-    {{!-- Saved Articles Panel --}}
-    {{#each saved}}
+    {{!-- Saved Articles Panel --}} {{#each saved}}
     <div class="card" id="articlesPanel">
         <div class="card-body">
             <div class="card-title">
@@ -40,14 +39,13 @@
             <div class="card-text" id="savedCardText">{{summary}}</div>
         </div>
     </div>
-    {{/each}}
-
-    {{!-- Note Modal --}}
+    {{/each}} {{!-- Note Modal --}}
     <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" id="modalHeader">
-                    {{!-- <h3>Notes For Article: {{_id}}</h3> --}}
+                    {{!--
+                    <h3>Notes For Article: {{_id}}</h3> --}}
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -63,10 +61,12 @@
                     {{/each}} {{else}}
                     <h5 class="modal-title" id="exampleModalLabel">No notes for this article yet.</h5>
                     {{/if}}
-                    <textarea class="newNoteText" placeholder="New Note" rows="4" cols="60"></textarea>
                 </div>
                 <div class="modal-footer" id="modalFooter">
-                    <button type="button" class="btn btn-secondary" id="saveNote" data-dismiss="modal">Save Note</button>
+                    <form name="noteForm" class="noteForm">
+                        <input class="noteText" name="noteText" placeholder="New Note" rows="4" cols="60">
+                        <button type="submit" class="btn btn-secondary" id="saveNote" data-dismiss="modal">Save Note</button>
+                    </form>
                 </div>
             </div>
         </div>
