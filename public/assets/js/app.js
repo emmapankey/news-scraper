@@ -8,10 +8,11 @@ $(document).ready(function () {
             url: "/api/scrape"
         }).done(function() {
             location.reload();
+            $("#scrapedModal").modal();
         })
     });
 
-            // console.log("made it here");
+
             //     $("#noArticlesModal").modal();
             // }
             // else {
