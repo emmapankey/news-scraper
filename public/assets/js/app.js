@@ -12,20 +12,9 @@ $(document).ready(function () {
         })
     });
 
-
-            //     $("#noArticlesModal").modal();
-            // }
-            // else {
-                //  location.reload();
-            //     $("#scrapedModal").modal();
-            // }
-
-        // $("#scrapedModal").modal();
-  
-
     // Save an article request
     $(document).on("click", "#saveBtn", function () {
-        var id = $(this).data("id");
+        const id = $(this).data("id");
 
         $.ajax("/api/saved/" + id, {
             type: "PUT",
@@ -34,8 +23,8 @@ $(document).ready(function () {
     });
 
     // "Delete" a saved article request
-    $('#deleteBtn').click(function (event) {
-        var id = $(this).data("id");
+    $("#deleteBtn").click(function (event) {
+        const id = $(this).data("id");
 
         $.ajax("/api/delete/" + id, {
             type: "POST"
@@ -44,24 +33,23 @@ $(document).ready(function () {
         })
     });
 
-
-    $(document).on("click", "#noteBtn", function () {
+    // On click of the article notes button
+    $("#noteBtn").click(function (event) {
+        // grab id for the article from the article notes button
+        const id = $(this).data("id");
+        //open note modal
         $("#noteModal").modal();
-    });
 
-    // Create a note request
-    $(document).on("click", "#saveNote", function () {
+        // on click of the save note button
+        $("#saveNote").click(function (event) {
 
-        var noteobj = {
-            
-        }
-
-        $ajax({
-            method: "POST",
-            url: "/api/note",
-            data: noteObj
-        }).done(function (data) {
-
+            // post note text
+            $.ajax("/api/note/" + id, {
+                type: "POST",
+                data: $(".noteText")
+            }).done(function (data) {
+                // do something here to display the newly created note
+            })
         })
     });
 
