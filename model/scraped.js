@@ -35,12 +35,12 @@ var scrapedSchema = mongoose.Schema({
     saved: {
         type: Boolean,
         default: false
-    },
-    note: [{
-        type: Schema.Types.ObjectId,
-        // ObjectIds refer to the ids in the Note collection
-        ref: "Note"
-      }]
+    }
+    // note: [{
+    //     type: Schema.Types.ObjectId,
+    //     // ObjectIds refer to the ids in the Note collection
+    //     ref: "Note"
+    //   }]
 });
 
 // Create Scraped model with the scrapedSchema
