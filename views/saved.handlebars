@@ -51,16 +51,7 @@
         </button>
                 </div>
                 <div class="modal-body" id="modalBody">
-                    {{#if articleWithNote}} {{#each articleWithNote}}
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            {{note}}
-                            <button class="btn btn-danger" id="deleteNoteBtn">x</button>
-                        </li>
-                    </ul>
-                    {{/each}} {{else}}
                     <h5 class="modal-title" id="exampleModalLabel">No notes for this article yet.</h5>
-                    {{/if}}
                 </div>
                 <div class="modal-footer" id="modalFooter">
                     <form name="noteForm" class="noteForm">

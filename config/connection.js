@@ -1,5 +1,5 @@
 // Require Mongoose
-var mongoose = require("Mongoose");
+var mongoose = require("mongoose");
 
 // Database configuration with Mongoose
 mongoose.connect("mongodb://localhost/news-scraper");
